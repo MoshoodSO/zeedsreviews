@@ -53,6 +53,7 @@ export function Header() {
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/reviews", label: "Book Reviews" },
+    { href: "/zeedits", label: "Zeedits" },
     { href: "/about", label: "About" },
   ];
 

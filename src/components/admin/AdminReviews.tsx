@@ -9,6 +9,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { ImageUpload } from "@/components/ui/image-upload";
 import { Plus, Edit, Trash2, Eye, EyeOff, Star } from "lucide-react";
 import { toast } from "sonner";
 import { format } from "date-fns";
@@ -263,15 +264,12 @@ export function AdminReviews() {
                   </Select>
                 </div>
               </div>
-              <div className="space-y-2">
-                <Label htmlFor="cover_image">Cover Image URL</Label>
-                <Input
-                  id="cover_image"
-                  value={formData.cover_image}
-                  onChange={(e) => setFormData(prev => ({ ...prev, cover_image: e.target.value }))}
-                  placeholder="https://example.com/cover.jpg"
-                />
-              </div>
+              <ImageUpload
+                value={formData.cover_image}
+                onChange={(url) => setFormData(prev => ({ ...prev, cover_image: url }))}
+                folder="book-covers"
+                label="Book Cover Image"
+              />
               <div className="space-y-2">
                 <Label htmlFor="rating">Rating (1-5 stars)</Label>
                 <div className="flex gap-1">
