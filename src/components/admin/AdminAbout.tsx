@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { ImageUpload } from "@/components/ui/image-upload";
 import { toast } from "sonner";
 import { Save } from "lucide-react";
 
@@ -91,36 +91,25 @@ export function AdminAbout() {
       <CardContent className="space-y-6">
         <div className="space-y-2">
           <Label htmlFor="about_title" className="font-body">Title</Label>
-          <Input
+          <Textarea
             id="about_title"
             value={about.title}
             onChange={(e) =>
               setAbout((prev) => prev ? { ...prev, title: e.target.value } : null)
             }
             placeholder="About Zeeds Book Review"
+            rows={2}
           />
         </div>
 
-        <div className="space-y-2">
-          <Label htmlFor="profile_image" className="font-body">Profile Image URL</Label>
-          <Input
-            id="profile_image"
-            value={about.profile_image || ""}
-            onChange={(e) =>
-              setAbout((prev) => prev ? { ...prev, profile_image: e.target.value || null } : null)
-            }
-            placeholder="https://example.com/profile.jpg"
-          />
-          {about.profile_image && (
-            <div className="mt-2">
-              <img
-                src={about.profile_image}
-                alt="Profile preview"
-                className="w-24 h-24 rounded-full object-cover"
-              />
-            </div>
-          )}
-        </div>
+        <ImageUpload
+          value={about.profile_image || ""}
+          onChange={(url) =>
+            setAbout((prev) => prev ? { ...prev, profile_image: url || null } : null)
+          }
+          folder="about"
+          label="Profile Image"
+        />
 
         <div className="space-y-2">
           <Label htmlFor="about_content" className="font-body">Content</Label>
