@@ -7,8 +7,10 @@ import Index from "./pages/Index";
 import Reviews from "./pages/Reviews";
 import ReviewDetail from "./pages/ReviewDetail";
 import About from "./pages/About";
+import Zeedits from "./pages/Zeedits";
 import Auth from "./pages/Auth";
 import Admin from "./pages/Admin";
+
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,9 +26,9 @@ const App = () => (
           <Route path="/reviews" element={<Reviews />} />
           <Route path="/review/:slug" element={<ReviewDetail />} />
           <Route path="/about" element={<About />} />
+          <Route path="/zeedits" element={<Zeedits />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/admin" element={<Admin />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

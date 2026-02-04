@@ -231,6 +231,63 @@ export type Database = {
         }
         Relationships: []
       }
+      zeedits_page: {
+        Row: {
+          contact_email: string
+          hero_subtitle: string | null
+          hero_title: string
+          id: string
+          intro_text: string | null
+          updated_at: string
+        }
+        Insert: {
+          contact_email?: string
+          hero_subtitle?: string | null
+          hero_title?: string
+          id?: string
+          intro_text?: string | null
+          updated_at?: string
+        }
+        Update: {
+          contact_email?: string
+          hero_subtitle?: string | null
+          hero_title?: string
+          id?: string
+          intro_text?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      zeedits_services: {
+        Row: {
+          created_at: string
+          description: string
+          display_order: number
+          id: string
+          image_url: string | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description: string
+          display_order?: number
+          id?: string
+          image_url?: string | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string
+          display_order?: number
+          id?: string
+          image_url?: string | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

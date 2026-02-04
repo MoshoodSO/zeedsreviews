@@ -10,7 +10,8 @@ import { AdminComments } from "@/components/admin/AdminComments";
 import { AdminSettings } from "@/components/admin/AdminSettings";
 import { AdminCategories } from "@/components/admin/AdminCategories";
 import { AdminAbout } from "@/components/admin/AdminAbout";
-import { LogOut, BookOpen, MessageSquare, Settings, Folder, User } from "lucide-react";
+import { AdminZeedits } from "@/components/admin/AdminZeedits";
+import { LogOut, BookOpen, MessageSquare, Settings, Folder, User, PenTool } from "lucide-react";
 import { toast } from "sonner";
 
 const Admin = () => {
@@ -183,6 +184,10 @@ const Admin = () => {
               <User className="w-4 h-4" />
               About Page
             </TabsTrigger>
+            <TabsTrigger value="zeedits" className="gap-2 font-body">
+              <PenTool className="w-4 h-4" />
+              Zeedits
+            </TabsTrigger>
             <TabsTrigger value="settings" className="gap-2 font-body">
               <Settings className="w-4 h-4" />
               Site Settings
@@ -200,6 +205,9 @@ const Admin = () => {
           </TabsContent>
           <TabsContent value="about">
             <AdminAbout />
+          </TabsContent>
+          <TabsContent value="zeedits">
+            <AdminZeedits />
           </TabsContent>
           <TabsContent value="settings">
             <AdminSettings />
