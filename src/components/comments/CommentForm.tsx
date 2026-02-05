@@ -5,6 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import { getSafeErrorMessage } from "@/lib/error-utils";
 
 interface CommentFormProps {
   reviewId: string;
@@ -22,8 +23,28 @@ export function CommentForm({ reviewId, onCommentSubmitted }: CommentFormProps) 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!formData.author_name.trim() || !formData.content.trim()) {
+    const authorName = formData.author_name.trim();
+    const content = formData.content.trim();
+    const authorEmail = formData.author_email.trim();
+    
+    // Client-side validation with length limits
+    if (!authorName || !content) {
       toast.error("Please fill in your name and comment");
+      return;
+    }
+    
+    if (authorName.length > 100) {
+      toast.error("Name must be 100 characters or less");
+      return;
+    }
+    
+    if (content.length > 5000) {
+      toast.error("Comment must be 5000 characters or less");
+      return;
+    }
+    
+    if (authorEmail && authorEmail.length > 255) {
+      toast.error("Email must be 255 characters or less");
       return;
     }
 
@@ -31,14 +52,13 @@ export function CommentForm({ reviewId, onCommentSubmitted }: CommentFormProps) 
 
     const { error } = await supabase.from("comments").insert({
       review_id: reviewId,
-      author_name: formData.author_name.trim(),
-      author_email: formData.author_email.trim() || null,
-      content: formData.content.trim(),
+      author_name: authorName,
+      author_email: authorEmail || null,
+      content: content,
     });
 
     if (error) {
-      toast.error("Failed to submit comment. Please try again.");
-      console.error("Comment error:", error);
+      toast.error(getSafeErrorMessage(error, "Failed to submit comment. Please try again."));
     } else {
       toast.success("Comment submitted! It will appear after moderation.");
       setFormData({ author_name: "", author_email: "", content: "" });
@@ -62,6 +82,7 @@ export function CommentForm({ reviewId, onCommentSubmitted }: CommentFormProps) 
               setFormData((prev) => ({ ...prev, author_name: e.target.value }))
             }
             placeholder="Your name"
+            maxLength={100}
             required
           />
         </div>
@@ -77,6 +98,7 @@ export function CommentForm({ reviewId, onCommentSubmitted }: CommentFormProps) 
               setFormData((prev) => ({ ...prev, author_email: e.target.value }))
             }
             placeholder="your@email.com"
+            maxLength={255}
           />
         </div>
       </div>
@@ -92,8 +114,12 @@ export function CommentForm({ reviewId, onCommentSubmitted }: CommentFormProps) 
           }
           placeholder="Share your thoughts..."
           rows={4}
+          maxLength={5000}
           required
         />
+        <p className="text-xs text-muted-foreground mt-1">
+          {formData.content.length}/5000 characters
+        </p>
       </div>
       <Button type="submit" disabled={isSubmitting} className="w-full md:w-auto">
         {isSubmitting ? "Submitting..." : "Post Comment"}

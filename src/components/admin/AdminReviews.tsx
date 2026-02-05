@@ -13,6 +13,7 @@ import { ImageUpload } from "@/components/ui/image-upload";
 import { Plus, Edit, Trash2, Eye, EyeOff, Star } from "lucide-react";
 import { toast } from "sonner";
 import { format } from "date-fns";
+import { getAdminErrorMessage } from "@/lib/error-utils";
 
 interface Review {
   id: string;
@@ -132,7 +133,7 @@ export function AdminReviews() {
     }
 
     if (error) {
-      toast.error(error.message);
+      toast.error(getAdminErrorMessage(error, "Failed to save review."));
     } else {
       toast.success(editingReview ? "Review updated!" : "Review created!");
       setIsDialogOpen(false);
@@ -151,7 +152,7 @@ export function AdminReviews() {
       .eq("id", review.id);
 
     if (error) {
-      toast.error(error.message);
+      toast.error(getAdminErrorMessage(error, "Failed to update review status."));
     } else {
       toast.success(review.is_published ? "Review unpublished" : "Review published!");
       fetchData();
@@ -164,7 +165,7 @@ export function AdminReviews() {
     const { error } = await supabase.from("reviews").delete().eq("id", id);
 
     if (error) {
-      toast.error(error.message);
+      toast.error(getAdminErrorMessage(error, "Failed to delete review."));
     } else {
       toast.success("Review deleted");
       fetchData();

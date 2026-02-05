@@ -8,6 +8,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Plus, Edit, Trash2 } from "lucide-react";
 import { toast } from "sonner";
+import { getAdminErrorMessage } from "@/lib/error-utils";
 
 interface Category {
   id: string;
@@ -84,7 +85,7 @@ export function AdminCategories() {
     }
 
     if (error) {
-      toast.error(error.message);
+      toast.error(getAdminErrorMessage(error, "Failed to save category."));
     } else {
       toast.success(editingCategory ? "Category updated!" : "Category created!");
       setIsDialogOpen(false);
@@ -99,7 +100,7 @@ export function AdminCategories() {
     const { error } = await supabase.from("categories").delete().eq("id", id);
 
     if (error) {
-      toast.error(error.message);
+      toast.error(getAdminErrorMessage(error, "Failed to delete category."));
     } else {
       toast.success("Category deleted");
       fetchCategories();

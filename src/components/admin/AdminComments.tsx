@@ -6,6 +6,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Check, X, Trash2 } from "lucide-react";
 import { toast } from "sonner";
 import { format } from "date-fns";
+import { getAdminErrorMessage } from "@/lib/error-utils";
 
 interface Comment {
   id: string;
@@ -42,7 +43,7 @@ export function AdminComments() {
       .eq("id", comment.id);
 
     if (error) {
-      toast.error(error.message);
+      toast.error(getAdminErrorMessage(error, "Failed to update comment status."));
     } else {
       toast.success(comment.is_approved ? "Comment hidden" : "Comment approved!");
       fetchComments();
@@ -55,7 +56,7 @@ export function AdminComments() {
     const { error } = await supabase.from("comments").delete().eq("id", id);
 
     if (error) {
-      toast.error(error.message);
+      toast.error(getAdminErrorMessage(error, "Failed to delete comment."));
     } else {
       toast.success("Comment deleted");
       fetchComments();
