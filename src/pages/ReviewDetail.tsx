@@ -61,10 +61,9 @@ const ReviewDetail = () => {
 
   const fetchComments = async (reviewId: string) => {
     const { data } = await supabase
-      .from("comments")
+      .from("comments_public")
       .select("*")
       .eq("review_id", reviewId)
-      .eq("is_approved", true)
       .order("created_at", { ascending: false });
 
     if (data) {
