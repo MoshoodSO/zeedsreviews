@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Upload, X, Loader2 } from "lucide-react";
 import { toast } from "sonner";
+import { getSafeErrorMessage } from "@/lib/error-utils";
 
 interface ImageUploadProps {
   value: string;
@@ -65,8 +66,7 @@ export function ImageUpload({
       onChange(publicUrl);
       toast.success("Image uploaded successfully!");
     } catch (error: any) {
-      console.error("Upload error:", error);
-      toast.error(error.message || "Failed to upload image");
+      toast.error(getSafeErrorMessage(error, "Failed to upload image. Please try again."));
     } finally {
       setIsUploading(false);
       // Reset input

@@ -10,6 +10,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { ImageUpload } from "@/components/ui/image-upload";
 import { Plus, Edit, Trash2, Save, ArrowUp, ArrowDown } from "lucide-react";
 import { toast } from "sonner";
+import { getAdminErrorMessage } from "@/lib/error-utils";
 
 interface Service {
   id: string;
@@ -86,7 +87,7 @@ export function AdminZeedits() {
       .eq("id", pageContent.id);
 
     if (error) {
-      toast.error(error.message);
+      toast.error(getAdminErrorMessage(error, "Failed to update page content."));
     } else {
       toast.success("Page content updated!");
       fetchData();
@@ -139,7 +140,7 @@ export function AdminZeedits() {
     }
 
     if (error) {
-      toast.error(error.message);
+      toast.error(getAdminErrorMessage(error, "Failed to save service."));
     } else {
       toast.success(editingService ? "Service updated!" : "Service created!");
       setIsDialogOpen(false);
@@ -154,7 +155,7 @@ export function AdminZeedits() {
     const { error } = await supabase.from("zeedits_services").delete().eq("id", id);
 
     if (error) {
-      toast.error(error.message);
+      toast.error(getAdminErrorMessage(error, "Failed to delete service."));
     } else {
       toast.success("Service deleted");
       fetchData();

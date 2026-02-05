@@ -9,6 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useAdmin } from "@/hooks/useAdmin";
 import { toast } from "sonner";
 import { z } from "zod";
+import { getSafeErrorMessage } from "@/lib/error-utils";
 
 const emailSchema = z.string().email("Please enter a valid email");
 const passwordSchema = z.string().min(6, "Password must be at least 6 characters");
@@ -63,11 +64,7 @@ const Auth = () => {
     const { error } = await signIn(formData.email, formData.password);
 
     if (error) {
-      if (error.message.includes("Invalid login")) {
-        toast.error("Invalid email or password");
-      } else {
-        toast.error(error.message);
-      }
+      toast.error(getSafeErrorMessage(error, "Unable to sign in. Please try again."));
     } else {
       toast.success("Welcome back!");
       navigate("/admin");
@@ -83,11 +80,7 @@ const Auth = () => {
     const { error } = await signUp(formData.email, formData.password);
 
     if (error) {
-      if (error.message.includes("already registered")) {
-        toast.error("This email is already registered. Please sign in.");
-      } else {
-        toast.error(error.message);
-      }
+      toast.error(getSafeErrorMessage(error, "Unable to create account. Please try again."));
     } else {
       toast.success("Account created! Please check your email to verify.");
     }

@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { ImageUpload } from "@/components/ui/image-upload";
 import { toast } from "sonner";
 import { Save } from "lucide-react";
+import { getAdminErrorMessage } from "@/lib/error-utils";
 
 interface AboutContent {
   id: string;
@@ -52,7 +53,7 @@ export function AdminAbout() {
       .eq("id", about.id);
 
     if (error) {
-      toast.error(error.message);
+      toast.error(getAdminErrorMessage(error, "Failed to save about page."));
     } else {
       toast.success("About page saved!");
     }
