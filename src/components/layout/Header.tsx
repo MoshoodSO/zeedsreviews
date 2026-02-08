@@ -4,6 +4,7 @@ import { Menu, X, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { cn } from "@/lib/utils";
+import logoImage from "@/assets/logo.png";
 
 interface SiteSettings {
   site_name?: string;
@@ -68,9 +69,11 @@ export function Header() {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-display text-lg md:text-xl font-bold transition-transform group-hover:scale-105">
-              Z
-            </div>
+            <img 
+              src={logoImage} 
+              alt="Zeeds Book Review Logo" 
+              className="w-10 h-10 md:w-12 md:h-12 object-contain transition-transform group-hover:scale-105"
+            />
             <div className="hidden sm:block">
               <h1 className="font-display text-lg md:text-xl font-semibold text-foreground">
                 {settings.site_name || "Zeeds Book Review"}
