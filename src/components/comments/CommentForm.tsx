@@ -60,7 +60,7 @@ export function CommentForm({ reviewId, onCommentSubmitted }: CommentFormProps) 
     if (error) {
       toast.error(getSafeErrorMessage(error, "Failed to submit comment. Please try again."));
     } else {
-      toast.success("Comment submitted! It will appear after moderation.");
+      toast.success("Comment posted successfully!");
       setFormData({ author_name: "", author_email: "", content: "" });
       onCommentSubmitted?.();
     }
