@@ -1,20 +1,24 @@
 import { Facebook, Twitter, Linkedin, Share2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 
 interface ShareButtonsProps {
   url: string;
   title: string;
+  description?: string;
+  image?: string | null;
 }
 
-export function ShareButtons({ url, title }: ShareButtonsProps) {
+export function ShareButtons({ url, title, description = "", image }: ShareButtonsProps) {
   const encodedUrl = encodeURIComponent(url);
   const encodedTitle = encodeURIComponent(title);
+  const encodedDescription = encodeURIComponent(description);
 
   const links = [
     {
       name: "Facebook",
       icon: Facebook,
-      href: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
+      href: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}&quote=${encodedTitle}`,
     },
     {
       name: "Twitter",
@@ -29,15 +33,14 @@ export function ShareButtons({ url, title }: ShareButtonsProps) {
     {
       name: "Instagram",
       icon: Share2,
-      href: `https://www.instagram.com/`,
       copyOnly: true,
     },
   ];
 
   const handleShare = (link: typeof links[0]) => {
     if (link.copyOnly) {
-      navigator.clipboard.writeText(url);
-      window.open(link.href, "_blank", "noopener,noreferrer");
+      navigator.clipboard.writeText(`${title}\n\n${description}\n\n${url}`);
+      toast.success("Review link & details copied! Paste it on Instagram.");
       return;
     }
     window.open(link.href, "_blank", "noopener,noreferrer,width=600,height=400");
