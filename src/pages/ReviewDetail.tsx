@@ -178,6 +178,8 @@ const ReviewDetail = () => {
               <ShareButtons
                 url={window.location.href}
                 title={`${review.title} - ${review.book_title} by ${review.book_author}`}
+                description={review.content.substring(0, 200)}
+                image={review.cover_image}
               />
             </div>
           </header>
