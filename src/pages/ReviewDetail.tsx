@@ -5,6 +5,7 @@ import { CommentForm } from "@/components/comments/CommentForm";
 import { CommentList } from "@/components/comments/CommentList";
 import { supabase } from "@/integrations/supabase/client";
 import { ArrowLeft, Calendar, Star, User, Tag } from "lucide-react";
+import { ShareButtons } from "@/components/reviews/ShareButtons";
 import { format } from "date-fns";
 import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
@@ -171,6 +172,14 @@ const ReviewDetail = () => {
                 ))}
               </div>
             )}
+
+            {/* Share Buttons */}
+            <div className="mt-6 flex justify-center">
+              <ShareButtons
+                url={window.location.href}
+                title={`${review.title} - ${review.book_title} by ${review.book_author}`}
+              />
+            </div>
           </header>
 
           {/* Cover Image */}
