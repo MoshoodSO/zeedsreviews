@@ -1,4 +1,4 @@
-# Zeeds Reviews
+# 📚📝 Zeeds Reviews
 
 Welcome to **Zeeds Reviews**, a platform designed to help users discover meaningful insights and honest feedback about products, services, and experiences. This repository contains the front-end and back-end code powering the review platform.
 
