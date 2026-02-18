@@ -1,6 +1,3 @@
-Here’s a **professional `README.md`** for your repository **[Linked Repository – MoshoodSO/zeedsreviews](https://github.com/MoshoodSO/zeedsreviews)** in the same style/format you requested earlier:
-
-````markdown
 # Zeeds Reviews
 
 Welcome to **Zeeds Reviews**, a platform designed to help users discover meaningful insights and honest feedback about products, services, and experiences. This repository contains the front-end and back-end code powering the review platform.
@@ -53,7 +50,7 @@ To run this project locally you’ll need:
 
    ```sh
    git clone https://github.com/MoshoodSO/zeedsreviews.git
-````
+   ````
 
 2. **Navigate into directory**
 
@@ -133,10 +130,4 @@ This project is open source and available under the **MIT License** (or add what
 
 **Zeeds Reviews** was created by *MoshoodSO* — a passionate developer dedicated to building tools that help users make smarter decisions through honest, community-driven feedback.
 
-```
 
----
-
-If you want, I can also help **add badges**, **description text for GitHub topics**, or **screenshots** to make the README even more engaging! 🚀
-::contentReference[oaicite:1]{index=1}
-```
