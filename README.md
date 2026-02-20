@@ -136,6 +136,6 @@ This project is open source and available under the **MIT License** (or add what
 
 ## 🧠 About
 
-**Zeeds Reviews** was created by *MoshoodSO* — a passionate developer dedicated to building tools that help users make smarter decisions through honest, community-driven feedback.
+**Zeeds Reviews** was created by *Shoyombo Moshood O.* — a passionate developer dedicated to building tools that help users make smarter decisions through honest, community-driven feedback.
 
 
