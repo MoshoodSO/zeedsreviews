@@ -62,7 +62,7 @@ export function ReviewGrid({ reviews, isLoading }: ReviewGridProps) {
             bookAuthor={review.book_author}
             coverImage={review.cover_image}
             rating={review.rating}
-            excerpt={review.content.substring(0, 150)}
+            excerpt={review.content.replace(/<[^>]*>/g, '').substring(0, 150)}
             publishedAt={review.published_at}
           />
         </div>
