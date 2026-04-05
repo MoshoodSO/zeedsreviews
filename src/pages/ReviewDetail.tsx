@@ -196,13 +196,10 @@ const ReviewDetail = () => {
           )}
 
           {/* Content */}
-          <div className="prose prose-lg max-w-none font-body">
-            {review.content.split("\n").map((paragraph, i) => (
-              <p key={i} className="mb-4 text-foreground/90 leading-relaxed">
-                {paragraph}
-              </p>
-            ))}
-          </div>
+          <div
+            className="prose prose-lg max-w-none font-body text-foreground/90 leading-relaxed"
+            dangerouslySetInnerHTML={{ __html: review.content }}
+          />
 
           {/* Comments Section */}
           <section className="mt-16 pt-8 border-t border-border">

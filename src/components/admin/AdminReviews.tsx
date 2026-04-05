@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import { RichTextEditor } from "@/components/ui/rich-text-editor";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
@@ -293,14 +293,11 @@ export function AdminReviews() {
                 </div>
               </div>
               <div className="space-y-2">
-                <Label htmlFor="content">Review Content</Label>
-                <Textarea
-                  id="content"
+                <Label>Review Content</Label>
+                <RichTextEditor
                   value={formData.content}
-                  onChange={(e) => setFormData(prev => ({ ...prev, content: e.target.value }))}
+                  onChange={(value) => setFormData(prev => ({ ...prev, content: value }))}
                   placeholder="Write your review..."
-                  rows={8}
-                  required
                 />
               </div>
               <div className="flex items-center gap-2">
