@@ -293,14 +293,11 @@ export function AdminReviews() {
                 </div>
               </div>
               <div className="space-y-2">
-                <Label htmlFor="content">Review Content</Label>
-                <Textarea
-                  id="content"
+                <Label>Review Content</Label>
+                <RichTextEditor
                   value={formData.content}
-                  onChange={(e) => setFormData(prev => ({ ...prev, content: e.target.value }))}
+                  onChange={(value) => setFormData(prev => ({ ...prev, content: value }))}
                   placeholder="Write your review..."
-                  rows={8}
-                  required
                 />
               </div>
               <div className="flex items-center gap-2">
