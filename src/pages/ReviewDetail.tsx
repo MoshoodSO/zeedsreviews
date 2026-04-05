@@ -8,7 +8,7 @@ import { ArrowLeft, Calendar, Star, User, Tag } from "lucide-react";
 import { ShareButtons } from "@/components/reviews/ShareButtons";
 import { format } from "date-fns";
 import { Skeleton } from "@/components/ui/skeleton";
-import { cn } from "@/lib/utils";
+import { cn, normalizeRichTextContent, stripHtml } from "@/lib/utils";
 
 interface Review {
   id: string;
@@ -114,6 +114,9 @@ const ReviewDetail = () => {
     );
   }
 
+  const renderedContent = normalizeRichTextContent(review.content);
+  const plainContent = stripHtml(review.content);
+
   return (
     <Layout>
       <article className="container mx-auto px-4 py-12">
@@ -178,7 +181,7 @@ const ReviewDetail = () => {
               <ShareButtons
                 url={window.location.href}
                 title={`${review.title} - ${review.book_title} by ${review.book_author}`}
-                description={review.content.replace(/<[^>]*>/g, '').substring(0, 200)}
+                description={plainContent.substring(0, 200)}
                 image={review.cover_image}
               />
             </div>
@@ -198,7 +201,7 @@ const ReviewDetail = () => {
           {/* Content */}
           <div
             className="prose prose-lg max-w-none font-body text-foreground/90 leading-relaxed"
-            dangerouslySetInnerHTML={{ __html: review.content }}
+            dangerouslySetInnerHTML={{ __html: renderedContent }}
           />
 
           {/* Comments Section */}

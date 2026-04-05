@@ -1,5 +1,6 @@
 import { ReviewCard } from "./ReviewCard";
 import { Skeleton } from "@/components/ui/skeleton";
+import { stripHtml } from "@/lib/utils";
 
 interface Review {
   id: string;
@@ -62,7 +63,7 @@ export function ReviewGrid({ reviews, isLoading }: ReviewGridProps) {
             bookAuthor={review.book_author}
             coverImage={review.cover_image}
             rating={review.rating}
-            excerpt={review.content.replace(/<[^>]*>/g, '').substring(0, 150)}
+            excerpt={stripHtml(review.content).substring(0, 150)}
             publishedAt={review.published_at}
           />
         </div>
