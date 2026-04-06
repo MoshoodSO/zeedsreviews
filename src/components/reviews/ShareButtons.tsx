@@ -7,28 +7,32 @@ interface ShareButtonsProps {
   title: string;
   description?: string;
   image?: string | null;
+  slug?: string;
 }
 
-export function ShareButtons({ url, title, description = "", image }: ShareButtonsProps) {
-  const encodedUrl = encodeURIComponent(url);
+export function ShareButtons({ url, title, description = "", image, slug }: ShareButtonsProps) {
+  // Use the edge function URL for social sharing so platforms get proper OG meta tags
+  const ogUrl = slug
+    ? `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/og-review?slug=${encodeURIComponent(slug)}`
+    : url;
+  const encodedOgUrl = encodeURIComponent(ogUrl);
   const encodedTitle = encodeURIComponent(title);
-  const encodedDescription = encodeURIComponent(description);
 
   const links = [
     {
       name: "Facebook",
       icon: Facebook,
-      href: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}&quote=${encodedTitle}`,
+      href: `https://www.facebook.com/sharer/sharer.php?u=${encodedOgUrl}&quote=${encodedTitle}`,
     },
     {
       name: "Twitter",
       icon: Twitter,
-      href: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,
+      href: `https://twitter.com/intent/tweet?url=${encodedOgUrl}&text=${encodedTitle}`,
     },
     {
       name: "LinkedIn",
       icon: Linkedin,
-      href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
+      href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedOgUrl}`,
     },
     {
       name: "Instagram",
