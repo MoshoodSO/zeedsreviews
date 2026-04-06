@@ -22,7 +22,9 @@ function decodeHtmlEntities(value: string) {
 }
 
 export function normalizeRichTextContent(value: string) {
-  const decoded = decodeHtmlEntities(value ?? "").trim();
+  const decoded = decodeHtmlEntities(value ?? "")
+    .replace(/\u00A0/g, " ")
+    .trim();
 
   if (!decoded) return "";
 

@@ -200,7 +200,7 @@ const ReviewDetail = () => {
 
           {/* Content */}
           <div
-            className="prose prose-lg max-w-none font-body text-foreground/90 leading-relaxed text-left break-words overflow-hidden"
+            className="review-content text-foreground/90"
             dangerouslySetInnerHTML={{ __html: renderedContent }}
           />
 

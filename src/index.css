@@ -189,3 +189,133 @@
   color: hsl(var(--muted-foreground));
   font-style: italic;
 }
+
+.review-content {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  text-align: left;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: normal;
+  hyphens: manual;
+}
+
+.review-content > *:first-child {
+  margin-top: 0;
+}
+
+.review-content > *:last-child {
+  margin-bottom: 0;
+}
+
+.review-content p,
+.review-content ul,
+.review-content ol,
+.review-content blockquote,
+.review-content h1,
+.review-content h2,
+.review-content h3,
+.review-content h4,
+.review-content h5,
+.review-content h6 {
+  margin: 0 0 1rem;
+}
+
+.review-content h1,
+.review-content h2,
+.review-content h3,
+.review-content h4,
+.review-content h5,
+.review-content h6 {
+  font-family: var(--font-body);
+  font-weight: 600;
+  letter-spacing: normal;
+  line-height: 1.3;
+}
+
+.review-content h1 {
+  font-size: 2em;
+}
+
+.review-content h2 {
+  font-size: 1.5em;
+}
+
+.review-content h3 {
+  font-size: 1.17em;
+}
+
+.review-content ul,
+.review-content ol {
+  padding-left: 1.5rem;
+}
+
+.review-content ul {
+  list-style: disc;
+}
+
+.review-content ol {
+  list-style: decimal;
+}
+
+.review-content blockquote {
+  border-left: 4px solid hsl(var(--border));
+  padding-left: 1rem;
+  color: hsl(var(--muted-foreground));
+  font-style: italic;
+}
+
+.review-content a {
+  color: hsl(var(--primary));
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.review-content strong {
+  font-weight: 700;
+}
+
+.review-content em {
+  font-style: italic;
+}
+
+.review-content u {
+  text-decoration: underline;
+}
+
+.review-content s {
+  text-decoration: line-through;
+}
+
+.review-content .ql-align-center {
+  text-align: center;
+}
+
+.review-content .ql-align-right {
+  text-align: right;
+}
+
+.review-content .ql-align-justify {
+  text-align: justify;
+}
+
+.review-content .ql-size-small {
+  font-size: 0.75em;
+}
+
+.review-content .ql-size-large {
+  font-size: 1.5em;
+}
+
+.review-content .ql-size-huge {
+  font-size: 2.5em;
+}
+
+.review-content .ql-font-serif {
+  font-family: Georgia, serif;
+}
+
+.review-content .ql-font-monospace {
+  font-family: Monaco, 'Courier New', monospace;
+}
