@@ -183,6 +183,7 @@ const ReviewDetail = () => {
                 title={`${review.title} - ${review.book_title} by ${review.book_author}`}
                 description={plainContent.substring(0, 200)}
                 image={review.cover_image}
+                slug={review.slug}
               />
             </div>
           </header>
