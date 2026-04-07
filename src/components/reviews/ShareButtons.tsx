@@ -10,13 +10,11 @@ interface ShareButtonsProps {
   slug?: string;
 }
 
-export function ShareButtons({ url, title, description = "", image, slug }: ShareButtonsProps) {
-  // Use the OG proxy for social platforms so crawlers see the book cover image,
-  // but the proxy auto-redirects humans to the real page URL
+export function ShareButtons({ url, title, description = "", slug }: ShareButtonsProps) {
   const shareUrl = slug
     ? `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/og-review?slug=${encodeURIComponent(slug)}`
     : url;
-  const encodedShareUrl = encodeURIComponent(shareUrl);
+  const encodedUrl = encodeURIComponent(shareUrl);
   const encodedTitle = encodeURIComponent(title);
   const whatsappText = encodeURIComponent(`${title}\n\n${description.substring(0, 200)}\n\n${shareUrl}`);
 
@@ -24,17 +22,17 @@ export function ShareButtons({ url, title, description = "", image, slug }: Shar
     {
       name: "Facebook",
       icon: Facebook,
-      href: `https://www.facebook.com/sharer/sharer.php?u=${encodedShareUrl}&quote=${encodedTitle}`,
+      href: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}&quote=${encodedTitle}`,
     },
     {
       name: "Twitter",
       icon: Twitter,
-      href: `https://twitter.com/intent/tweet?url=${encodedShareUrl}&text=${encodedTitle}`,
+      href: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,
     },
     {
       name: "LinkedIn",
       icon: Linkedin,
-      href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedShareUrl}`,
+      href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
     },
     {
       name: "WhatsApp",
@@ -48,12 +46,13 @@ export function ShareButtons({ url, title, description = "", image, slug }: Shar
     },
   ];
 
-  const handleShare = (link: typeof links[0]) => {
+  const handleShare = (link: (typeof links)[number]) => {
     if (link.copyOnly) {
       navigator.clipboard.writeText(`${title}\n\n${description}\n\n${url}`);
       toast.success("Review link & details copied! Paste it on Instagram.");
       return;
     }
+
     window.open(link.href, "_blank", "noopener,noreferrer,width=600,height=400");
   };
 
