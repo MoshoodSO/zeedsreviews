@@ -16,7 +16,9 @@ export function ShareButtons({ url, title, description = "", slug }: ShareButton
     : url;
   const encodedUrl = encodeURIComponent(shareUrl);
   const encodedTitle = encodeURIComponent(title);
-  const whatsappText = encodeURIComponent(`${title}\n\n${description.substring(0, 200)}\n\n${shareUrl}`);
+  const whatsappText = encodeURIComponent(
+    [title, description.substring(0, 200), url].filter(Boolean).join("\n\n")
+  );
 
   const links = [
     {
