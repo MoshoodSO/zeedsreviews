@@ -11,12 +11,9 @@ interface ShareButtonsProps {
 }
 
 export function ShareButtons({ url, title, description = "", image, slug }: ShareButtonsProps) {
-  const ogUrl = slug
-    ? `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/og-review?slug=${encodeURIComponent(slug)}`
-    : url;
-  const encodedOgUrl = encodeURIComponent(ogUrl);
+  const encodedUrl = encodeURIComponent(url);
   const encodedTitle = encodeURIComponent(title);
-  const whatsappText = encodeURIComponent(`${title}\n\n${description.substring(0, 200)}\n\n${ogUrl}`);
+  const whatsappText = encodeURIComponent(`${title}\n\n${description.substring(0, 200)}\n\n${url}`);
 
   const links = [
     {
