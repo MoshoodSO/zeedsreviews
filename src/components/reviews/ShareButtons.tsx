@@ -11,25 +11,30 @@ interface ShareButtonsProps {
 }
 
 export function ShareButtons({ url, title, description = "", image, slug }: ShareButtonsProps) {
-  const encodedUrl = encodeURIComponent(url);
+  // Use the OG proxy for social platforms so crawlers see the book cover image,
+  // but the proxy auto-redirects humans to the real page URL
+  const shareUrl = slug
+    ? `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/og-review?slug=${encodeURIComponent(slug)}`
+    : url;
+  const encodedShareUrl = encodeURIComponent(shareUrl);
   const encodedTitle = encodeURIComponent(title);
-  const whatsappText = encodeURIComponent(`${title}\n\n${description.substring(0, 200)}\n\n${url}`);
+  const whatsappText = encodeURIComponent(`${title}\n\n${description.substring(0, 200)}\n\n${shareUrl}`);
 
   const links = [
     {
       name: "Facebook",
       icon: Facebook,
-      href: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}&quote=${encodedTitle}`,
+      href: `https://www.facebook.com/sharer/sharer.php?u=${encodedShareUrl}&quote=${encodedTitle}`,
     },
     {
       name: "Twitter",
       icon: Twitter,
-      href: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,
+      href: `https://twitter.com/intent/tweet?url=${encodedShareUrl}&text=${encodedTitle}`,
     },
     {
       name: "LinkedIn",
       icon: Linkedin,
-      href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
+      href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedShareUrl}`,
     },
     {
       name: "WhatsApp",
