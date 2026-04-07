@@ -19,17 +19,17 @@ export function ShareButtons({ url, title, description = "", image, slug }: Shar
     {
       name: "Facebook",
       icon: Facebook,
-      href: `https://www.facebook.com/sharer/sharer.php?u=${encodedOgUrl}&quote=${encodedTitle}`,
+      href: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}&quote=${encodedTitle}`,
     },
     {
       name: "Twitter",
       icon: Twitter,
-      href: `https://twitter.com/intent/tweet?url=${encodedOgUrl}&text=${encodedTitle}`,
+      href: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,
     },
     {
       name: "LinkedIn",
       icon: Linkedin,
-      href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedOgUrl}`,
+      href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
     },
     {
       name: "WhatsApp",
