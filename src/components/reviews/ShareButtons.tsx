@@ -11,9 +11,14 @@ interface ShareButtonsProps {
 }
 
 export function ShareButtons({ url, title, description = "", image, slug }: ShareButtonsProps) {
-  const encodedUrl = encodeURIComponent(url);
+  // Use the OG proxy for social platforms so crawlers see the book cover image,
+  // but the proxy auto-redirects humans to the real page URL
+  const shareUrl = slug
+    ? `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/og-review?slug=${encodeURIComponent(slug)}`
+    : url;
+  const encodedShareUrl = encodeURIComponent(shareUrl);
   const encodedTitle = encodeURIComponent(title);
-  const whatsappText = encodeURIComponent(`${title}\n\n${description.substring(0, 200)}\n\n${url}`);
+  const whatsappText = encodeURIComponent(`${title}\n\n${description.substring(0, 200)}\n\n${shareUrl}`);
 
   const links = [
     {
