@@ -1,4 +1,4 @@
-import { Facebook, Twitter, Linkedin, Share2 } from "lucide-react";
+import { Facebook, Twitter, Linkedin, Share2, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 
@@ -11,12 +11,12 @@ interface ShareButtonsProps {
 }
 
 export function ShareButtons({ url, title, description = "", image, slug }: ShareButtonsProps) {
-  // Use the edge function URL for social sharing so platforms get proper OG meta tags
   const ogUrl = slug
     ? `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/og-review?slug=${encodeURIComponent(slug)}`
     : url;
   const encodedOgUrl = encodeURIComponent(ogUrl);
   const encodedTitle = encodeURIComponent(title);
+  const whatsappText = encodeURIComponent(`${title}\n\n${description.substring(0, 200)}\n\n${ogUrl}`);
 
   const links = [
     {
@@ -33,6 +33,11 @@ export function ShareButtons({ url, title, description = "", image, slug }: Shar
       name: "LinkedIn",
       icon: Linkedin,
       href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedOgUrl}`,
+    },
+    {
+      name: "WhatsApp",
+      icon: MessageCircle,
+      href: `https://wa.me/?text=${whatsappText}`,
     },
     {
       name: "Instagram",
