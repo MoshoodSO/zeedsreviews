@@ -30,6 +30,7 @@ interface Comment {
   author_name: string;
   content: string;
   created_at: string;
+  parent_id: string | null;
 }
 
 const ReviewDetail = () => {
@@ -221,7 +222,7 @@ const ReviewDetail = () => {
               />
             </div>
 
-            <CommentList comments={comments} />
+            <CommentList comments={comments} reviewId={review.id} onCommentSubmitted={() => fetchComments(review.id)} />
           </section>
         </div>
       </article>

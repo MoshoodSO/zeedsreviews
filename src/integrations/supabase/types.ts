@@ -70,6 +70,7 @@ export type Database = {
           created_at: string
           id: string
           is_approved: boolean
+          parent_id: string | null
           review_id: string
         }
         Insert: {
@@ -79,6 +80,7 @@ export type Database = {
           created_at?: string
           id?: string
           is_approved?: boolean
+          parent_id?: string | null
           review_id: string
         }
         Update: {
@@ -88,9 +90,24 @@ export type Database = {
           created_at?: string
           id?: string
           is_approved?: boolean
+          parent_id?: string | null
           review_id?: string
         }
         Relationships: [
+          {
+            foreignKeyName: "comments_parent_id_fkey"
+            columns: ["parent_id"]
+            isOneToOne: false
+            referencedRelation: "comments"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "comments_parent_id_fkey"
+            columns: ["parent_id"]
+            isOneToOne: false
+            referencedRelation: "comments_public"
+            referencedColumns: ["id"]
+          },
           {
             foreignKeyName: "comments_review_id_fkey"
             columns: ["review_id"]
@@ -296,7 +313,7 @@ export type Database = {
           content: string | null
           created_at: string | null
           id: string | null
-          is_approved: boolean | null
+          parent_id: string | null
           review_id: string | null
         }
         Insert: {
@@ -304,7 +321,7 @@ export type Database = {
           content?: string | null
           created_at?: string | null
           id?: string | null
-          is_approved?: boolean | null
+          parent_id?: string | null
           review_id?: string | null
         }
         Update: {
@@ -312,10 +329,24 @@ export type Database = {
           content?: string | null
           created_at?: string | null
           id?: string | null
-          is_approved?: boolean | null
+          parent_id?: string | null
           review_id?: string | null
         }
         Relationships: [
+          {
+            foreignKeyName: "comments_parent_id_fkey"
+            columns: ["parent_id"]
+            isOneToOne: false
+            referencedRelation: "comments"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "comments_parent_id_fkey"
+            columns: ["parent_id"]
+            isOneToOne: false
+            referencedRelation: "comments_public"
+            referencedColumns: ["id"]
+          },
           {
             foreignKeyName: "comments_review_id_fkey"
             columns: ["review_id"]
