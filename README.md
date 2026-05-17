@@ -12,9 +12,9 @@ Welcome to **Zeeds Reviews**, a platform designed to help users discover meaning
 
 ## 📸 Screenshots
 
-| *Home page*                                                                        | *About page*                                                                                 | *Admin login page*                                                                              |
+| *Home page*                                                                        | *About page*                                                                                 | *Review page*                                                                              |
 | ---------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| ![Home page](https://github.com/MoshoodSO/zeedsreviews/blob/main/home.png) | ![About page](https://github.com/MoshoodSO/zeedsreviews/blob/main/zeeds/zeeds.png) | ![admin page](https://github.com/MoshoodSO/zeedsreviews/blob/main/admin.png) |
+| ![Home page](https://github.com/MoshoodSO/zeedsreviews/blob/main/home.png) | ![About page](https://github.com/MoshoodSO/zeedsreviews/blob/main/zeeds/zeeds.png) | ![admin page](https://github.com/MoshoodSO/zeedsreviews/blob/main/zeeds/review.png) |
 
 ---
 
