@@ -25,6 +25,7 @@ Welcome to **Zeeds Reviews**, a platform designed to help users discover meaning
 | `public/` | Static assets and markup used by the web UI |
 | `src/` | Front-end application source code |
 | `.github/workflows/` | CI/CD workflow configuration |
+| `zeeds/` | Pages of the website | 
 | `package.json` | Node project configuration and dependencies |
 | `tsconfig.json` | TypeScript configuration |
 | `tailwind.config.ts` | TailwindCSS configuration |
