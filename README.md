@@ -14,7 +14,7 @@ Welcome to **Zeeds Reviews**, a platform designed to help users discover meaning
 
 | *Home page*                                                                        | *About page*                                                                                 | *Book Reviews page*                                                                              |
 | ---------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| ![Home page](https://github.com/MoshoodSO/zeedsreviews/blob/main/home.png) | ![About page](https://github.com/MoshoodSO/zeedsreviews/blob/main/zeeds/zeeds1.png) | ![Review page](https://github.com/MoshoodSO/zeedsreviews/blob/main/zeeds/review.png) |
+| ![Home page](https://github.com/MoshoodSO/zeedsreviews/blob/main/zeeds/homepage.png) | ![About page](https://github.com/MoshoodSO/zeedsreviews/blob/main/zeeds/zeeds1.png) | ![Review page](https://github.com/MoshoodSO/zeedsreviews/blob/main/zeeds/review.png) |
 
 ---
 
