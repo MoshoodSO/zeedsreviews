@@ -133,7 +133,6 @@ Thank you for helping grow Zeeds Reviews into a helpful review community!
 
 This project is open source and available under the **MIT License** (or add whatever license you prefer).
 
----
 
 ## 🧠 About
 
