@@ -11,7 +11,7 @@ Welcome to **Zeeds Reviews**, a platform designed to help users discover meaning
 ---
 ## Live Website
 
-Here is the live website of the repository: [!Homepage](https://zeedsreviews.vercel.app/)
+Here is the live website of the repository: ![Homepage](https://zeedsreviews.vercel.app/)
 
 ---
 ## 📸 Screenshots
