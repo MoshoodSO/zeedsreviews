@@ -9,7 +9,7 @@ Welcome to **Zeeds Reviews**, a platform designed to help users discover meaning
 **Zeeds Reviews** is aimed at fostering a community where users can share authentic reviews to help others make informed decisions. It features a user-friendly interface, search filtering, and account-based review posting and management.
 
 ---
-## Live Website
+## 🌐 Live Website
 
 Here is the live website of the repository: [Homepage](https://zeedsreviews.vercel.app/)
 
