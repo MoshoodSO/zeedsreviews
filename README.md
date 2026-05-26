@@ -137,9 +137,10 @@ Thank you for helping grow Zeeds Reviews into a helpful review community!
 
 This project is open source and available under the **MIT License** (or add whatever license you prefer).
 
+---
 
 ## 🧠 About
 
 **Zeeds Reviews** was created by *Shoyombo Moshood O.* — a passionate developer dedicated to building tools that help users make smarter decisions through honest, community-driven feedback.
 
-
+---
